@@ -1,0 +1,49 @@
+<div fxLayout="row"
+     fxLayoutAlign="start"
+     style="height: 100%; width: 100%;">
+   <div [fxHide]="isListHiddenForMobile"
+        fxHide.gt-sm="false"
+        fxFlex="100"
+        fxFlex.gt-sm="30"
+        (tap)="viewDetails()">
+      <md-toolbar id="listToolBar"
+                  color="primary">
+         <div fxLayout="row"
+              fxLayoutAlign="space-between"
+              style="width: 100%;">
+            <span>Task List</span>
+            <md-icon (click)="onAddNewTask()">control_point</md-icon>
+         </div>
+      </md-toolbar>
+      <perfect-scrollbar id="taskList"
+                         class="taskList">
+         <app-task-list-item *ngFor="let task of tasks; let i = index;"
+                             [taskListItemId]="'task' + i"
+                             [taskListItemHeight]="listItemHeight"
+                             [taskListItem]="task"
+                             (onTaskListItemSelected)="onTaskListItemSelected($event)"></app-task-list-item>
+
+         <div *ngIf="!tasks.length"
+              class="noTaskToDisplayMsg">
+            No tasks to display
+         </div>
+      </perfect-scrollbar>
+   </div>
+
+   <div [fxHide]="!isListHiddenForMobile"
+        fxHide.gt-sm="false"
+        fxFlex="100"
+        fxFlex.gt-sm="70"
+        class="taskDetailsWrp"
+        (swiperight)="backToList()">
+      <md-toolbar color="accent">
+         <span>Task Details</span>
+      </md-toolbar>
+      <perfect-scrollbar class="taskDetails">
+         <app-task-details [taskDetails]="selectedTask"
+                           [isAddNewTaskMode]="isAddNewTaskMode"
+                           (onTaskDetailsCancel)="onTaskDetailsCancel($event)"
+                           (onTaskDetailsSubmit)="onTaskDetailsSubmit($event)"></app-task-details>
+      </perfect-scrollbar>
+   </div>
+</div>

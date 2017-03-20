@@ -1,0 +1,57 @@
+<div fxLayout="row"
+     fxLayoutAlign="start">
+   <md-input-container fxFlex="100"
+                       fxFlex.gt-sm="50">
+      <input mdInput
+             placeholder="Header"
+             [(ngModel)]="taskDetails.header">
+   </md-input-container>
+</div>
+<div fxLayout="row"
+     fxLayoutAlign="start">
+   <md-input-container fxFlex="100"
+                       fxFlex.gt-sm="50">
+      <textarea mdInput
+                placeholder="Details"
+                md-autosize
+                minRows="2"
+                [(ngModel)]="taskDetails.details"></textarea>
+   </md-input-container>
+</div>
+<div fxLayout="row"
+     fxLayoutAlign="start">
+   <div fxFlex="100"
+        fxFlex.gt-sm="50" style="margin: 1rem 0;">
+      <md-select placeholder="Status"
+                 [(ngModel)]="taskDetails.status"
+                 name="status">
+         <md-option *ngFor="let status of statuses"
+                    [value]="status.guid">
+            {{status.description}}
+         </md-option>
+      </md-select>
+   </div>
+</div>
+<div fxLayout="row"
+     fxLayoutAlign="start">
+   <md-input-container fxFlex="50"
+                       fxFlex.gt-sm="25">
+      <input mdInput
+             type="number"
+             placeholder="Points"
+             [(ngModel)]="taskDetails.points">
+   </md-input-container>
+</div>
+
+<div fxLayout="row"
+     fxFlex="100"
+     fxFlex.gt-sm="50"
+     class="form-action-btns"
+     fxLayoutAlign="end center">
+   <button md-raised-button
+           (click)="onCancel()">Cancel
+   </button>
+   <button md-raised-button
+           (click)="onSubmit()">{{isAddNewTaskMode ? 'Add' : 'Save'}}
+   </button>
+</div>

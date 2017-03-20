@@ -1,0 +1,42 @@
+<div class="taskListItem"
+     (click)="selectTaskListItem()"
+     [id]="taskListItemId">
+   <div fxLayout="row"
+        fxLayoutAlign="start"
+        [style.height.px]="taskListItemHeight"
+        style="width: 100%;">
+      <div class="taskListItemStatusBorder"
+           [ngClass]="{openTaskListItem: taskListItem.status === '0', inProgressTaskListItem: taskListItem.status === '1', closedTaskListItem: taskListItem.status === '2'}">
+      </div>
+      <div fxLayout="column"
+           [ngClass]="{selectedListItem: taskListItem.isSelected}"
+           fxLayoutAlign="space-between"
+           style="width: 100%; margin-left: 11px;">
+         <div fxLayout="column"
+              style="width: 100%;">
+            <div fxLayout="row"
+                 fxLayoutAlign="space-between start">
+               <div class="taskListItemHeader">
+                  {{ taskListItem.header }}
+               </div>
+               <div class="taskListItemType">
+                  {{ taskListItem.type }}
+               </div>
+            </div>
+
+            <div fxLayout="row"
+                 fxLayoutAlign="space-between start">
+               <div class="taskListItemDetails">
+                  {{ taskListItem.details }}
+               </div>
+               <div class="taskListItemPoints">
+                  {{ taskListItem.points }}
+               </div>
+            </div>
+         </div>
+         <div class="taskListItemCreatedBy">
+            {{ taskListItem.createdBy }} created on {{ taskListItem.createdAt | date: 'longDate' }}
+         </div>
+      </div>
+   </div>
+</div>

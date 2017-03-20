@@ -1,0 +1,19 @@
+.taskList {
+   overflow-y: auto;
+   padding: 0 16px;
+}
+
+.taskDetailsWrp {
+   background-color: white;
+}
+
+.taskDetails {
+   padding: 16px;
+}
+
+.noTaskToDisplayMsg{
+   padding: 16px 0;
+}
+
+
+

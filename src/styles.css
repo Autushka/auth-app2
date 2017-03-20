@@ -1,0 +1,24 @@
+/* You can add global styles to this file, and also import other style files */
+@import '~@angular/material/core/theming/prebuilt/deeppurple-amber.css';
+
+@font-face {
+   font-family: Prociono;
+   src: url("/src/assets/fonts/Prociono-Regular.otf") format("opentype");
+}
+
+.mat-toolbar, .mat-raised-button, .mat-input-element {
+   font-family: Prociono !important;
+}
+
+.mat-icon {
+   margin-top: 2px;
+   cursor: pointer;
+}
+
+.form-action-btns .mat-raised-button{
+   margin-left: 5px
+}
+
+textarea{
+   line-height: 19px;
+}
