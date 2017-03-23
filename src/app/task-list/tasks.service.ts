@@ -1,13 +1,15 @@
 import {Injectable} from '@angular/core';
+import {CoreService} from "../core.service";
 
 declare var _: any;
 
 @Injectable()
 export class TasksService {
+   coreService: CoreService;
    tasks: any;
 
-
-   constructor() {
+   constructor(coreService: CoreService) {
+      this.coreService = coreService;
    }
 
    getTasks() {
@@ -88,19 +90,36 @@ export class TasksService {
       return this.tasks;
    }
 
-   createTask(task){
-      task.createdAt = (new Date()).getTime();
-      task.createdBy = 'Aleh Autushka';
-      this.tasks.push(_.cloneDeep(task));
+   setSelectedTask(task) {
+      let previousSelectedItem = _.find(this.tasks, {isSelected: true});
+      let newSelectedItem = _.find(this.tasks, {guid: task.guid});
+
+      if (previousSelectedItem) {
+         previousSelectedItem.isSelected = false;
+      }
+
+      newSelectedItem.isSelected = true;
+
+      return _.cloneDeep(newSelectedItem);
    }
 
-   updateTask(task){
-      let updatedTask = _.find(this.tasks, {guid: task.guid});
+   createTask(task) {
+      let taskToAdd = _.cloneDeep(task)
 
-      updatedTask = _.cloneDeep(task);
+      taskToAdd.guid = this.coreService.generateGuid();
+      taskToAdd.createdAt = (new Date()).getTime();
+      taskToAdd.createdBy = 'Aleh Autushka';
+      this.tasks.push(taskToAdd);
+
+      this.setSelectedTask(taskToAdd);
    }
 
-   getStatuses(){
+   updateTask(task) {
+      let taskIndex = _.indexOf(this.tasks, _.find(this.tasks, {guid: task.guid}));
+      this.tasks[taskIndex] = _.cloneDeep(task);
+   }
+
+   getStatuses() {
       let statuses = [];
       statuses.push({guid: '0', description: 'Open'});
       statuses.push({guid: '1', description: 'In Progress'});

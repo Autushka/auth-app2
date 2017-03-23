@@ -101,29 +101,17 @@ export class TaskListComponent implements OnInit {
       this.listItemHeight = initialItemHeight; // (documentHeight - toolBarHeight) / number of list items per view - item padding
    }
 
-   viewDetails() {
+   viewDetailsForMobile() {
       this.isListHiddenForMobile = true;
    }
 
-   backToList() {
+   backToListForMobile() {
       this.isListHiddenForMobile = false;
    }
 
-   onTaskListItemSelected(guid) {
+   onTaskListItemSelected(task) {
       this.isAddNewTaskMode = false;
-
-      let previousSelectedItem = _.find(this.tasks, {isSelected: true});
-      let newSelectedItem = _.find(this.tasks, {guid: guid});
-
-      if (previousSelectedItem) {
-         previousSelectedItem.isSelected = false;
-      }
-
-      if (newSelectedItem) {
-         newSelectedItem.isSelected = true;
-
-         this.selectedTask = _.cloneDeep(newSelectedItem);
-      }
+      this.selectedTask = this.tasksService.setSelectedTask(task);
    }
 
    onAddNewTask() {
@@ -134,15 +122,17 @@ export class TaskListComponent implements OnInit {
    onTaskDetailsCancel() {
       this.isAddNewTaskMode = false;
       this.selectedTask = _.cloneDeep(_.find(this.tasks, {isSelected: true}));
+      this.backToListForMobile();
    }
 
    onTaskDetailsSubmit() {
-      debugger;
       if(this.isAddNewTaskMode){
          this.tasksService.createTask(this.selectedTask);
+         this.isAddNewTaskMode = false;
       }
       else{
          this.tasksService.updateTask(this.selectedTask);
       }
+      this.backToListForMobile();
    }
 }

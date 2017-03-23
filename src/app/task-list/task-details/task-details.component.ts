@@ -23,7 +23,6 @@ export class TaskDetailsComponent implements OnInit {
    }
 
    ngOnInit() {
-      debugger;
       this.statuses = this.tasksService.getStatuses();
    }
 

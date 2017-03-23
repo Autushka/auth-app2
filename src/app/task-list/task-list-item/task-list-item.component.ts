@@ -19,6 +19,6 @@ export class TaskListItemComponent implements OnInit {
    }
 
    selectTaskListItem() {
-      this.onTaskListItemSelected.emit(this.taskListItem.guid);
+      this.onTaskListItemSelected.emit(this.taskListItem);
    }
 }

@@ -9,16 +9,17 @@
    min-height: 20px;
 }
 
-.taskListItemDetails{
+.taskListItemDetails {
    padding-right: 11px;
    overflow: hidden;
    text-overflow: ellipsis;
    display: -webkit-box;
-   line-height: 20px;     /* fallback */
-   min-height: 60px;      /* fallback */
+   line-height: 20px; /* fallback */
+   min-height: 60px; /* fallback */
    -webkit-line-clamp: 3; /* number of lines to show */
    -webkit-box-orient: vertical;
 }
+
 .taskListItemType {
    font-weight: bold;
    text-decoration: underline;
@@ -46,15 +47,21 @@
 
 }
 
-.openTaskListItem{
+.taskListItemMainContent {
+   width: 100%;
+   margin-left: 11px;
+   padding: 6px;
+}
+
+.openTaskListItem {
    background-color: lightcoral;
 }
 
-.inProgressTaskListItem{
+.inProgressTaskListItem {
    background-color: burlywood;
 }
 
-.closedTaskListItem{
+.closedTaskListItem {
    background-color: lightgreen;
 }
 
