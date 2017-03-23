@@ -116,7 +116,7 @@ export class TaskListComponent implements OnInit {
 
    onAddNewTask() {
       this.isAddNewTaskMode = true;
-      this.selectedTask = {header: '', details: '', guid: this.coreService.generateGuid()};
+      this.selectedTask = {header: '', details: '', status: 0, guid: this.coreService.generateGuid()};
    }
 
    onTaskDetailsCancel() {
