@@ -58,7 +58,7 @@ export class TaskListComponent implements OnInit {
    }
 
    scrollToClosestTask(scrollTopValue: number): void {
-      if(this.test < 7){
+      if(this.test < 30){
          alert("yo");
          this.test++;
       }
