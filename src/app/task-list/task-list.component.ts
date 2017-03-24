@@ -112,11 +112,13 @@ export class TaskListComponent implements OnInit {
    onTaskListItemSelected(task) {
       this.isAddNewTaskMode = false;
       this.selectedTask = this.tasksService.setSelectedTask(task);
+      this.viewDetailsForMobile();
    }
 
    onAddNewTask() {
       this.isAddNewTaskMode = true;
-      this.selectedTask = {header: '', details: '', status: 0, guid: this.coreService.generateGuid()};
+      this.selectedTask = {header: '', details: ''};
+      this.viewDetailsForMobile();
    }
 
    onTaskDetailsCancel() {
@@ -126,11 +128,13 @@ export class TaskListComponent implements OnInit {
    }
 
    onTaskDetailsSubmit() {
-      if(this.isAddNewTaskMode){
+      if (this.isAddNewTaskMode) {
          this.tasksService.createTask(this.selectedTask);
+         this.selectedTask = this.tasksService.getSelectedTask();
          this.isAddNewTaskMode = false;
       }
-      else{
+      else {
+         debugger;
          this.tasksService.updateTask(this.selectedTask);
       }
       this.backToListForMobile();

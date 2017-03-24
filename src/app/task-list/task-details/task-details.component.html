@@ -20,9 +20,9 @@
 </div>
 <div fxLayout="row"
      fxLayoutAlign="start">
-   <div fxFlex="100"
-        fxFlex.gt-sm="50" style="margin: 1rem 0;">
-      <md-select placeholder="Status"
+   <div fxFlex="50"
+        fxFlex.gt-sm="25" style="margin: 1rem 0;">
+      <md-select placeholder="Status" style="width: 100%;"
                  [(ngModel)]="taskDetails.status"
                  name="status">
          <md-option *ngFor="let status of statuses"

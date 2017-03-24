@@ -91,16 +91,21 @@ export class TasksService {
    }
 
    setSelectedTask(task) {
-      let previousSelectedItem = _.find(this.tasks, {isSelected: true});
-      let newSelectedItem = _.find(this.tasks, {guid: task.guid});
+      let previousSelectedTask = _.find(this.tasks, {isSelected: true});
+      let newSelectedTask = _.find(this.tasks, {guid: task.guid});
 
-      if (previousSelectedItem) {
-         previousSelectedItem.isSelected = false;
+      if (previousSelectedTask) {
+         previousSelectedTask.isSelected = false;
       }
 
-      newSelectedItem.isSelected = true;
+      newSelectedTask.isSelected = true;
 
-      return _.cloneDeep(newSelectedItem);
+      return _.cloneDeep(newSelectedTask);
+   }
+
+   getSelectedTask(){
+      let currentSelectedTask = _.find(this.tasks, {isSelected: true});
+      return _.cloneDeep(currentSelectedTask);
    }
 
    createTask(task) {
