@@ -36,6 +36,10 @@ export var TaskListComponent = (function () {
     }
     TaskListComponent.prototype.onAfterListScroll = function (event) {
         var _this = this;
+        if (!this.test) {
+            alert("yo");
+            this.test = true;
+        }
         if (this.scrollSubscribe) {
             this.scrollSubscribe.unsubscribe();
         }
@@ -60,7 +64,7 @@ export var TaskListComponent = (function () {
         this.tasks = this.tasksService.getTasks();
         this.selectedTask = _.cloneDeep(_.find(this.tasks, { isSelected: true }));
         if (!this.tasks.length) {
-            this.onAddNewTask();
+            this.switchToAddNewTaskMode();
         }
     };
     TaskListComponent.prototype.ngAfterViewInit = function () {
@@ -91,14 +95,20 @@ export var TaskListComponent = (function () {
         this.selectedTask = this.tasksService.setSelectedTask(task);
         this.viewDetailsForMobile();
     };
-    TaskListComponent.prototype.onAddNewTask = function () {
+    TaskListComponent.prototype.switchToAddNewTaskMode = function () {
         this.isAddNewTaskMode = true;
         this.selectedTask = { header: '', details: '' };
+    };
+    TaskListComponent.prototype.onAddNewTask = function () {
+        this.switchToAddNewTaskMode();
         this.viewDetailsForMobile();
     };
     TaskListComponent.prototype.onTaskDetailsCancel = function () {
         this.isAddNewTaskMode = false;
         this.selectedTask = _.cloneDeep(_.find(this.tasks, { isSelected: true }));
+        if (!this.selectedTask) {
+            this.switchToAddNewTaskMode();
+        }
         this.backToListForMobile();
     };
     TaskListComponent.prototype.onTaskDetailsSubmit = function () {
@@ -108,7 +118,6 @@ export var TaskListComponent = (function () {
             this.isAddNewTaskMode = false;
         }
         else {
-            debugger;
             this.tasksService.updateTask(this.selectedTask);
         }
         this.backToListForMobile();

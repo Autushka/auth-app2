@@ -29,8 +29,15 @@ export class TaskListComponent implements OnInit {
    scrollTimer: Observable<number>;
    scrollSubscribe: Subscription;
 
+   test: boolean;
+
    @HostListener('ps-scroll-y', ['$event'])
    onAfterListScroll(event) {
+      if(!this.test){
+         alert("yo");
+         this.test = true;
+      }
+
       if (this.scrollSubscribe) {
          this.scrollSubscribe.unsubscribe();
       }
@@ -74,7 +81,7 @@ export class TaskListComponent implements OnInit {
       this.selectedTask = _.cloneDeep(_.find(this.tasks, {isSelected: true}));
 
       if (!this.tasks.length) {
-         this.onAddNewTask();
+         this.switchToAddNewTaskMode();
       }
    }
 
@@ -115,15 +122,22 @@ export class TaskListComponent implements OnInit {
       this.viewDetailsForMobile();
    }
 
-   onAddNewTask() {
+   switchToAddNewTaskMode(){
       this.isAddNewTaskMode = true;
       this.selectedTask = {header: '', details: ''};
+   }
+
+   onAddNewTask() {
+      this.switchToAddNewTaskMode();
       this.viewDetailsForMobile();
    }
 
    onTaskDetailsCancel() {
       this.isAddNewTaskMode = false;
       this.selectedTask = _.cloneDeep(_.find(this.tasks, {isSelected: true}));
+      if(!this.selectedTask){
+         this.switchToAddNewTaskMode();
+      }
       this.backToListForMobile();
    }
 
@@ -134,7 +148,6 @@ export class TaskListComponent implements OnInit {
          this.isAddNewTaskMode = false;
       }
       else {
-         debugger;
          this.tasksService.updateTask(this.selectedTask);
       }
       this.backToListForMobile();
