@@ -74,7 +74,7 @@ export class TaskListComponent implements OnInit {
       this.selectedTask = _.cloneDeep(_.find(this.tasks, {isSelected: true}));
 
       if (!this.tasks.length) {
-         this.onAddNewTask();
+         this.switchToAddNewTaskMode();
       }
    }
 
@@ -101,48 +101,48 @@ export class TaskListComponent implements OnInit {
       this.listItemHeight = initialItemHeight; // (documentHeight - toolBarHeight) / number of list items per view - item padding
    }
 
-   viewDetails() {
+   viewDetailsForMobile() {
       this.isListHiddenForMobile = true;
    }
 
-   backToList() {
+   backToListForMobile() {
       this.isListHiddenForMobile = false;
    }
 
-   onTaskListItemSelected(guid) {
+   onTaskListItemSelected(task) {
       this.isAddNewTaskMode = false;
+      this.selectedTask = this.tasksService.setSelectedTask(task);
+      this.viewDetailsForMobile();
+   }
 
-      let previousSelectedItem = _.find(this.tasks, {isSelected: true});
-      let newSelectedItem = _.find(this.tasks, {guid: guid});
-
-      if (previousSelectedItem) {
-         previousSelectedItem.isSelected = false;
-      }
-
-      if (newSelectedItem) {
-         newSelectedItem.isSelected = true;
-
-         this.selectedTask = _.cloneDeep(newSelectedItem);
-      }
+   switchToAddNewTaskMode(){
+      this.isAddNewTaskMode = true;
+      this.selectedTask = {header: '', details: ''};
    }
 
    onAddNewTask() {
-      this.isAddNewTaskMode = true;
-      this.selectedTask = {header: '', details: '', guid: this.coreService.generateGuid()};
+      this.switchToAddNewTaskMode();
+      this.viewDetailsForMobile();
    }
 
    onTaskDetailsCancel() {
       this.isAddNewTaskMode = false;
       this.selectedTask = _.cloneDeep(_.find(this.tasks, {isSelected: true}));
+      if(!this.selectedTask){
+         this.switchToAddNewTaskMode();
+      }
+      this.backToListForMobile();
    }
 
    onTaskDetailsSubmit() {
-      debugger;
-      if(this.isAddNewTaskMode){
+      if (this.isAddNewTaskMode) {
          this.tasksService.createTask(this.selectedTask);
+         this.selectedTask = this.tasksService.getSelectedTask();
+         this.isAddNewTaskMode = false;
       }
-      else{
+      else {
          this.tasksService.updateTask(this.selectedTask);
       }
+      this.backToListForMobile();
    }
 }

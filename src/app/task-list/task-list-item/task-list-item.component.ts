@@ -1,5 +1,4 @@
-import {Component, OnInit, Input, Output} from '@angular/core';
-import {EventEmitter} from "@angular/forms/src/facade/async";
+import {Component, OnInit, Input, Output, EventEmitter} from '@angular/core';
 
 @Component({
    selector: 'app-task-list-item',
@@ -19,6 +18,6 @@ export class TaskListItemComponent implements OnInit {
    }
 
    selectTaskListItem() {
-      this.onTaskListItemSelected.emit(this.taskListItem.guid);
+      this.onTaskListItemSelected.emit(this.taskListItem);
    }
 }

@@ -16,30 +16,32 @@ import {PerfectScrollbarModule} from 'angular2-perfect-scrollbar';
 import {Ng2PageScrollModule} from 'ng2-page-scroll/ng2-page-scroll';
 
 import {TasksService} from "./task-list/tasks.service";
-import { TaskListItemComponent } from './task-list/task-list-item/task-list-item.component';
-import { TaskDetailsComponent } from './task-list/task-details/task-details.component';
+import {TaskListItemComponent} from './task-list/task-list-item/task-list-item.component';
+import {TaskDetailsComponent} from './task-list/task-details/task-details.component';
 import {CoreService} from "./core.service";
+import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 
 @NgModule({
-   declarations: [
-      AppComponent,
-      LoginComponent,
-      TaskListComponent,
-      TaskListItemComponent,
-      TaskDetailsComponent
-   ],
-   imports: [
-      BrowserModule,
-      FormsModule,
-      HttpModule,
-      MaterialModule,
-      FlexLayoutModule,
-      AppRoutingModule,
-      PerfectScrollbarModule,
-      Ng2PageScrollModule.forRoot()
-   ],
-   providers: [TasksService, CoreService],
-   bootstrap: [AppComponent]
+  declarations: [
+    AppComponent,
+    LoginComponent,
+    TaskListComponent,
+    TaskListItemComponent,
+    TaskDetailsComponent
+  ],
+  imports: [
+    BrowserModule,
+    BrowserAnimationsModule,
+    FormsModule,
+    HttpModule,
+    MaterialModule,
+    FlexLayoutModule,
+    AppRoutingModule,
+    PerfectScrollbarModule,
+    Ng2PageScrollModule.forRoot()
+  ],
+  providers: [TasksService, CoreService],
+  bootstrap: [AppComponent]
 })
 export class AppModule {
 }

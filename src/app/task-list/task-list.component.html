@@ -4,15 +4,14 @@
    <div [fxHide]="isListHiddenForMobile"
         fxHide.gt-sm="false"
         fxFlex="100"
-        fxFlex.gt-sm="30"
-        (tap)="viewDetails()">
+        fxFlex.gt-sm="30">
       <md-toolbar id="listToolBar"
                   color="primary">
          <div fxLayout="row"
               fxLayoutAlign="space-between"
               style="width: 100%;">
             <span>Task List</span>
-            <md-icon (click)="onAddNewTask()">control_point</md-icon>
+            <md-icon (tap)="onAddNewTask()">control_point</md-icon>
          </div>
       </md-toolbar>
       <perfect-scrollbar id="taskList"
@@ -34,16 +33,15 @@
         fxHide.gt-sm="false"
         fxFlex="100"
         fxFlex.gt-sm="70"
-        class="taskDetailsWrp"
-        (swiperight)="backToList()">
+        class="taskDetailsWrp">
       <md-toolbar color="accent">
          <span>Task Details</span>
       </md-toolbar>
       <perfect-scrollbar class="taskDetails">
          <app-task-details [taskDetails]="selectedTask"
                            [isAddNewTaskMode]="isAddNewTaskMode"
-                           (onTaskDetailsCancel)="onTaskDetailsCancel($event)"
-                           (onTaskDetailsSubmit)="onTaskDetailsSubmit($event)"></app-task-details>
+                           (onTaskDetailsCancel)="onTaskDetailsCancel()"
+                           (onTaskDetailsSubmit)="onTaskDetailsSubmit()"></app-task-details>
       </perfect-scrollbar>
    </div>
 </div>

@@ -1,5 +1,5 @@
 <div class="taskListItem"
-     (click)="selectTaskListItem()"
+     (tap)="selectTaskListItem()"
      [id]="taskListItemId">
    <div fxLayout="row"
         fxLayoutAlign="start"
@@ -9,9 +9,9 @@
            [ngClass]="{openTaskListItem: taskListItem.status === '0', inProgressTaskListItem: taskListItem.status === '1', closedTaskListItem: taskListItem.status === '2'}">
       </div>
       <div fxLayout="column"
+           class="taskListItemMainContent"
            [ngClass]="{selectedListItem: taskListItem.isSelected}"
-           fxLayoutAlign="space-between"
-           style="width: 100%; margin-left: 11px;">
+           fxLayoutAlign="space-between">
          <div fxLayout="column"
               style="width: 100%;">
             <div fxLayout="row"

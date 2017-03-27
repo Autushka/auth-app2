@@ -20,9 +20,9 @@
 </div>
 <div fxLayout="row"
      fxLayoutAlign="start">
-   <div fxFlex="100"
-        fxFlex.gt-sm="50" style="margin: 1rem 0;">
-      <md-select placeholder="Status"
+   <div fxFlex="50"
+        fxFlex.gt-sm="25" style="margin: 1rem 0;">
+      <md-select placeholder="Status" style="width: 100%;"
                  [(ngModel)]="taskDetails.status"
                  name="status">
          <md-option *ngFor="let status of statuses"
@@ -49,9 +49,9 @@
      class="form-action-btns"
      fxLayoutAlign="end center">
    <button md-raised-button
-           (click)="onCancel()">Cancel
+           (tap)="onCancel()">Cancel
    </button>
    <button md-raised-button
-           (click)="onSubmit()">{{isAddNewTaskMode ? 'Add' : 'Save'}}
+           (tap)="onSubmit()">{{isAddNewTaskMode ? 'Add' : 'Save'}}
    </button>
 </div>
