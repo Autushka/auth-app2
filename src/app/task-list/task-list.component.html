@@ -33,16 +33,15 @@
         fxHide.gt-sm="false"
         fxFlex="100"
         fxFlex.gt-sm="70"
-        class="taskDetailsWrp"
-        (swiperight)="backToListForMobile()">
+        class="taskDetailsWrp">
       <md-toolbar color="accent">
          <span>Task Details</span>
       </md-toolbar>
       <perfect-scrollbar class="taskDetails">
          <app-task-details [taskDetails]="selectedTask"
                            [isAddNewTaskMode]="isAddNewTaskMode"
-                           (onTaskDetailsCancel)="onTaskDetailsCancel($event)"
-                           (onTaskDetailsSubmit)="onTaskDetailsSubmit($event)"></app-task-details>
+                           (onTaskDetailsCancel)="onTaskDetailsCancel()"
+                           (onTaskDetailsSubmit)="onTaskDetailsSubmit()"></app-task-details>
       </perfect-scrollbar>
    </div>
 </div>

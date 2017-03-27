@@ -1,5 +1,4 @@
-import {Component, OnInit, Input, Output} from '@angular/core';
-import {EventEmitter} from "@angular/forms/src/facade/async";
+import {Component, OnInit, Input, Output, EventEmitter} from '@angular/core';
 import {TasksService} from "../tasks.service";
 
 declare var _: any;

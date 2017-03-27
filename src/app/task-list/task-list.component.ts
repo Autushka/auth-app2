@@ -29,8 +29,6 @@ export class TaskListComponent implements OnInit {
    scrollTimer: Observable<number>;
    scrollSubscribe: Subscription;
 
-   test: number = 0;
-
    @HostListener('ps-scroll-y', ['$event'])
    onAfterListScroll(event) {
       if (this.scrollSubscribe) {
@@ -58,10 +56,6 @@ export class TaskListComponent implements OnInit {
    }
 
    scrollToClosestTask(scrollTopValue: number): void {
-      if(this.test < 30){
-         alert("yo");
-         this.test++;
-      }
       let scrollingView = this.document.getElementById('taskList');
       let scrollToItemId = '#task' + Math.floor(scrollTopValue / (this.listItemHeight + this.listItemVerticalPadding));
 

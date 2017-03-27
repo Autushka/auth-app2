@@ -6,7 +6,7 @@
    src: url("/src/assets/fonts/Prociono-Regular.otf") format("opentype");
 }
 
-.mat-toolbar, .mat-raised-button, .mat-input-element {
+.mat-toolbar, .mat-raised-button, .mat-input-element, .mat-input-container, .mat-select, .mat-option {
    font-family: Prociono !important;
 }
 
