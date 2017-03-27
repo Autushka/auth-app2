@@ -15,17 +15,28 @@ export class TasksService {
    getTasks() {
       this.tasks = [];
 
-      // tasks.push({
-      //    type: 'Task',
-      //    guid: '1',
-      //    header: 'Prepare papers for MS position',
-      //    details: "Prepare answer for the papers and form request.",
-      //    points: 3,
-      //    status: 'Closed',
-      //    createdAt: 'March 12, 2017',
-      //    createdBy: 'Aleh Autushka',
-      //    isSelected: true
-      // });
+     //  this.tasks.push({
+     //     type: 'Task',
+     //     guid: '1',
+     //     header: 'Coding for US360',
+     //     details: "Finish development for US360 & set up pre-desk check for today for this US.",
+     //     points: 3,
+     //     status: 0,
+     //     createdAt: 'March 27, 2017',
+     //     createdBy: 'Aleh Autushka',
+     //     isSelected: true
+     //  });
+     // this.tasks.push({
+     //   type: 'Task',
+     //   guid: '2',
+     //   header: 'Navigation issue for the US302.',
+     //   details: "Check navigation issue for the US302.",
+     //   points: 3,
+     //   status: 0,
+     //   createdAt: 'March 27, 2017',
+     //   createdBy: 'Aleh Autushka',
+     //   isSelected: false
+     // });
       //
       // tasks.push({
       //    type: 'Task',
