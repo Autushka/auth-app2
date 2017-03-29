@@ -21,7 +21,7 @@ export class TaskListItemComponent implements OnInit {
   }
 
   selectTaskListItem() {
-    this.eventDelay = Observable.timer(3000);
+    this.eventDelay = Observable.timer(150);
     this.eventDelaySubscribe = this.eventDelay.subscribe(() => {
       this.onTaskListItemSelected.emit(this.taskListItem);
     });
