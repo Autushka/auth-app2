@@ -45,26 +45,26 @@ export class TaskListComponent implements OnInit {
   }
 
   onAfterListScroll(event) {
-    if (this.scrollSubscribe) {
-      this.scrollSubscribe.unsubscribe();
-    }
-
-    this.scrollTimer = Observable.timer(100);
-    this.scrollSubscribe = this.scrollTimer.subscribe(() => {
-      this.scrollToClosestTask(event.target.scrollTop);
-    });
+    // if (this.scrollSubscribe) {
+    //   this.scrollSubscribe.unsubscribe();
+    // }
+    //
+    // this.scrollTimer = Observable.timer(100);
+    // this.scrollSubscribe = this.scrollTimer.subscribe(() => {
+    //   this.scrollToClosestTask(event.target.scrollTop);
+    // });
   }
 
   scrollToClosestTask(scrollTopValue: number): void {
-    let scrollingView = this.document.getElementById('taskList');
-    let scrollToItemId = '#task' + Math.floor(scrollTopValue / (this.listItemHeight + this.listItemVerticalPadding));
-    let pageScrollInstance: PageScrollInstance = PageScrollInstance.newInstance({
-      document: this.document,
-      scrollTarget: scrollToItemId,
-      scrollingViews: [scrollingView]
-    });
-
-    this.pageScrollService.start(pageScrollInstance);
+    // let scrollingView = this.document.getElementById('taskList');
+    // let scrollToItemId = '#task' + Math.floor(scrollTopValue / (this.listItemHeight + this.listItemVerticalPadding));
+    // let pageScrollInstance: PageScrollInstance = PageScrollInstance.newInstance({
+    //   document: this.document,
+    //   scrollTarget: scrollToItemId,
+    //   scrollingViews: [scrollingView]
+    // });
+    //
+    // this.pageScrollService.start(pageScrollInstance);
   };
 
   ngOnInit() {
