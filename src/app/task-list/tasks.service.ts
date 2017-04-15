@@ -15,88 +15,88 @@ export class TasksService {
    getTasks() {
       this.tasks = [];
 
-     //  this.tasks.push({
-     //     type: 'Task',
-     //     guid: '1',
-     //     header: 'Coding for US360',
-     //     details: "Finish development for US360 & set up pre-desk check for today for this US.",
-     //     points: 3,
-     //     status: 0,
-     //     createdAt: 'March 27, 2017',
-     //     createdBy: 'Aleh Autushka',
-     //     isSelected: true
-     //  });
-     // this.tasks.push({
-     //   type: 'Task',
-     //   guid: '2',
-     //   header: 'Navigation issue for the US302.',
-     //   details: "Check navigation issue for the US302.",
-     //   points: 3,
-     //   status: 0,
-     //   createdAt: 'March 27, 2017',
-     //   createdBy: 'Aleh Autushka',
-     //   isSelected: false
-     // });
-      //
-      // tasks.push({
-      //    type: 'Task',
-      //    guid: '2',
-      //    header: 'Call NBC regarding municipal taxes',
-      //    details: "Check how to move from bell to ebox",
-      //    points: 3,
-      //    status: 'Closed',
-      //    createdAt: 'March 12, 2017',
-      //    createdBy: 'Aleh Autushka',
-      //    isSelected: false
-      // });
-      //
-      // tasks.push({
-      //    type: 'Task',
-      //    guid: '3',
-      //    header: 'Move agreement list call to the abstract view',
-      //    details: "Move agreement list call to the abstract view, remove current calls.",
-      //    points: 3,
-      //    status: 'Closed',
-      //    createdAt: 'March 12, 2017',
-      //    createdBy: 'Aleh Autushka',
-      //    isSelected: false
-      // });
-      //
-      // tasks.push({
-      //    type: 'Task',
-      //    guid: '4',
-      //    header: 'Implement redirection logic based on agreement list call results',
-      //    details: "Implement redirection logic based on agreement list call results",
-      //    points: 5,
-      //    status: 'Closed',
-      //    createdAt: 'March 12, 2017',
-      //    createdBy: 'Aleh Autushka',
-      //    isSelected: false
-      // });
-      //
-      // tasks.push({
-      //    type: 'Task',
-      //    guid: '5',
-      //    header: 'Check ebox internet',
-      //    details: "Check how to move from bell to ebox",
-      //    points: 3,
-      //    status: 'Open',
-      //    createdAt: 'March 12, 2017',
-      //    createdBy: 'Aleh Autushka',
-      //    isSelected: false
-      // });
-      //
-      // tasks.push({
-      //    type: 'Task',
-      //    guid: '6',
-      //    header: 'Follow up with NBC regarding municipal taxes (email sent)',
-      //    details: "Follow up email sent to johanne.picard@bnc.ca regarding municipal taxes for 2017",
-      //    points: 1,
-      //    status: 'Open',
-      //    createdAt: 'March 12, 2017',
-      //    createdBy: 'Aleh Autushka',
-      //    isSelected: false
-      // });
+      this.tasks.push({
+         type: 'Task',
+         guid: '1',
+         header: 'Coding for US360',
+         details: "Finish development for US360 & set up pre-desk check for today for this US.",
+         points: 3,
+         status: 0,
+         createdAt: 'March 27, 2017',
+         createdBy: 'Aleh Autushka',
+         isSelected: true
+      });
+     this.tasks.push({
+       type: 'Task',
+       guid: '2',
+       header: 'Navigation issue for the US302.',
+       details: "Check navigation issue for the US302.",
+       points: 3,
+       status: 0,
+       createdAt: 'March 27, 2017',
+       createdBy: 'Aleh Autushka',
+       isSelected: false
+     });
+
+     this.tasks.push({
+         type: 'Task',
+         guid: '2',
+         header: 'Call NBC regarding municipal taxes',
+         details: "Check how to move from bell to ebox",
+         points: 3,
+         status: 'Closed',
+         createdAt: 'March 12, 2017',
+         createdBy: 'Aleh Autushka',
+         isSelected: false
+      });
+
+     this.tasks.push({
+         type: 'Task',
+         guid: '3',
+         header: 'Move agreement list call to the abstract view',
+         details: "Move agreement list call to the abstract view, remove current calls.",
+         points: 3,
+         status: 'Closed',
+         createdAt: 'March 12, 2017',
+         createdBy: 'Aleh Autushka',
+         isSelected: false
+      });
+
+     this.tasks.push({
+         type: 'Task',
+         guid: '4',
+         header: 'Implement redirection logic based on agreement list call results',
+         details: "Implement redirection logic based on agreement list call results",
+         points: 5,
+         status: 'Closed',
+         createdAt: 'March 12, 2017',
+         createdBy: 'Aleh Autushka',
+         isSelected: false
+      });
+
+     this.tasks.push({
+         type: 'Task',
+         guid: '5',
+         header: 'Check ebox internet',
+         details: "Check how to move from bell to ebox",
+         points: 3,
+         status: 'Open',
+         createdAt: 'March 12, 2017',
+         createdBy: 'Aleh Autushka',
+         isSelected: false
+      });
+
+     this.tasks.push({
+         type: 'Task',
+         guid: '6',
+         header: 'Follow up with NBC regarding municipal taxes (email sent)',
+         details: "Follow up email sent to johanne.picard@bnc.ca regarding municipal taxes for 2017",
+         points: 1,
+         status: 'Open',
+         createdAt: 'March 12, 2017',
+         createdBy: 'Aleh Autushka',
+         isSelected: false
+      });
 
       return this.tasks;
    }
@@ -134,6 +134,11 @@ export class TasksService {
       let taskIndex = _.indexOf(this.tasks, _.find(this.tasks, {guid: task.guid}));
       this.tasks[taskIndex] = _.cloneDeep(task);
    }
+
+  deleteSelectedTask(task){
+    let taskIndex = _.indexOf(this.tasks, _.find(this.tasks, {guid: task.guid}));
+    this.tasks.splice(taskIndex, 1);
+  }
 
    getStatuses() {
       let statuses = [];

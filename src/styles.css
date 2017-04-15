@@ -13,12 +13,13 @@
 .mat-icon {
    margin-top: 2px;
    cursor: pointer;
+   margin-left: 10px;
 }
 
-.form-action-btns .mat-raised-button{
+.form-action-btns .mat-raised-button {
    margin-left: 5px
 }
 
-textarea{
+textarea {
    line-height: 19px;
 }
